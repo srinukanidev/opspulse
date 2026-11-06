@@ -9,9 +9,9 @@ def parse_log_file(log_file_path: Path) -> None:
     Returns:
         None
     """
-    ErrorCount = 0
-    WarningCount = 0
-    InfoCount = 0
+    error_count = 0
+    warning_count = 0
+    info_count = 0
     if not log_file_path.exists():
         raise FileNotFoundError(f"The log file {log_file_path} does not exist.")
 
@@ -21,16 +21,16 @@ def parse_log_file(log_file_path: Path) -> None:
             #  print(line.strip())  # Example processing: print each line
             if "ERROR" in line:
                 # print(f"Error found: {line.strip()}") 
-                 ErrorCount += 1
+                 error_count += 1
             elif "WARNING" in line:
                    # print(f"Warning found: {line.strip()}")
-                    WarningCount += 1
+                    warning_count += 1
             elif "INFO" in line:
                     #print(f"Info found: {line.strip()}")
-                    InfoCount += 1
-    print(f"Errors: {ErrorCount}")
-    print(f"Warnings: {WarningCount}")
-    print(f"Info: {InfoCount}")
+                    info_count += 1
+    print(f"Errors: {error_count}")
+    print(f"Warnings: {warning_count}")
+    print(f"Info: {info_count}")
 
 if __name__ == "__main__":
     log_file_path = Path("data/sample.log")  # Replace with the actual log file path
