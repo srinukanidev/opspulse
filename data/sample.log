@@ -4,3 +4,18 @@
 2026-11-06 09:03:00 WARNING High memory utilization
 2026-11-06 09:04:00 ERROR Database connection timeout
 2026-11-06 09:05:00 INFO Application recovered
+2026-11-06 09:06:00 ERROR Database connection refused
+2026-11-06 09:07:00 WARNING CPU utilization above threshold
+2026-99-99 25:70:00 ERROR Invalid timestamp
+2026-11-06 09:10:00
+2026-11-06 09:11:00 
+2026-11-06 ERROR Missing timestamp time component
+INVALID_TIMESTAMP ERROR Application failure
+2026-11-06 09:12:00 INFO
+
+2026-11-06 09:13:00 ERROR Disk space critically low
+2026-11-06 09:13:00  Disk space critically low
+2026-11-06 09:14:00 ERROR Disk space critically low
+2026-11-06 09:15:00 DEBUG Checking disk utilization
+2026-11-06 09:16:00 UNKNOWN Unexpected severity
+2026-11-06 09:17:00 INFO

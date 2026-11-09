@@ -1,7 +1,7 @@
-from opspulse.parse_log import parse_log_file
 from pathlib import Path
+from opspulse.parse_log import parse_log_file
 
-def main():
+def main() -> None:
     # print("Welcome to OpsPulse!")
     #print("My AI Engineering journey starts here.")
     #print(f"Python set __name__ to: {__name__} ")

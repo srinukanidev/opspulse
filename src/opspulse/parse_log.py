@@ -1,6 +1,8 @@
 from datetime import datetime
 from pathlib import Path
 
+VALID_SEVERITY_LEVELS = {"INFO", "WARNING", "ERROR", "DEBUG"}
+
 def parse_log_file(log_file_path: Path) -> None:
     """
     Parses the log file and extracts relevant information.
@@ -11,20 +13,35 @@ def parse_log_file(log_file_path: Path) -> None:
         None
     """
     if not log_file_path.exists():
-            raise FileNotFoundError(f"The log file {log_file_path} does not exist.")
+        raise FileNotFoundError(
+            f"The log file {log_file_path} does not exist."
+        )
     with log_file_path.open("r", encoding='utf-8') as log_file:
-        for line in log_file:
+        for line_number, line in enumerate(log_file, start=1):
             # Example parsing logic: print each line (you can customize this)
             line = line.strip()
             #print(line)
             if not line:
                 continue  # Skip empty lines
+            if len(line) < 20:
+                print(f"Invalid log entry (too short): {line}")
+                print("-" * 40)  # Separator for readability
+                continue
             timestamp_text = line[:19]
             remaining_text = line[20:]
-            timestamp = datetime.strptime(timestamp_text, "%Y-%m-%d %H:%M:%S")
+            try:
+                timestamp = datetime.strptime(timestamp_text, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                print(f"Invalid timestamp format: {line}")
+                print("-" * 40)  # Separator for readability
+                continue
             parts = remaining_text.split(maxsplit=1)
             #parts = remaining_text.split(" ", 1)
             severity = parts[0]
+            if severity not in VALID_SEVERITY_LEVELS:
+                print(f"Invalid severity level: {line_number}: {line}")
+                print("-" * 40)  # Separator for readability
+                continue
             message = parts[1] if len(parts) > 1 else ""
             print(f"Timestamp: {timestamp}")
             print(f"Severity Level: {severity}")
