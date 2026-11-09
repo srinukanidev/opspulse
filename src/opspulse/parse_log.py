@@ -16,11 +16,10 @@ def parse_log_file(log_file_path: Path) -> None:
         raise FileNotFoundError(
             f"The log file {log_file_path} does not exist."
         )
-    with log_file_path.open("r", encoding='utf-8') as log_file:
+    with log_file_path.open("r", encoding="utf-8") as log_file:
         for line_number, line in enumerate(log_file, start=1):
             # Example parsing logic: print each line (you can customize this)
             line = line.strip()
-            #print(line)
             if not line:
                 continue  # Skip empty lines
             if len(line) < 19:
@@ -45,7 +44,6 @@ def parse_log_file(log_file_path: Path) -> None:
                 continue
             remaining_text = line[20:]
             parts = remaining_text.split(maxsplit=1)
-            #parts = remaining_text.split(" ", 1)
             severity = parts[0].upper()
             if severity not in VALID_SEVERITY_LEVELS:
                 print(f"Invalid severity level: {line_number}: {line}")
