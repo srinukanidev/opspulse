@@ -23,7 +23,7 @@ def parse_log_file(log_file_path: Path) -> None:
             #print(line)
             if not line:
                 continue  # Skip empty lines
-            if len(line) < 20:
+            if len(line) < 19:
                 print(f"Invalid log entry (too short):{line_number}: {line}")
                 print("-" * 40)  # Separator for readability
                 continue
@@ -34,17 +34,18 @@ def parse_log_file(log_file_path: Path) -> None:
                 print(f"Invalid timestamp format: {line}")
                 print("-" * 40)  # Separator for readability
                 continue
+            # Validate separator after timestamp
+            if len(line) == 19:
+                print(f"Missing severity on line {line_number}: {line}")
+                continue
+
             if line[19] != " ":
-                            print(f"Invalid log entry (missing space after timestamp):{line_number}: {line}")
-                            print("-" * 40)  # Separator for readability
-                            continue
+                print(f"Invalid log entry (missing space after timestamp):{line_number}: {line}")
+                print("-" * 40)  # Separator for readability
+                continue
             remaining_text = line[20:]
             parts = remaining_text.split(maxsplit=1)
             #parts = remaining_text.split(" ", 1)
-            if not parts:
-                print(f"Invalid log entry (missing severity level):{line_number}: {line}")
-                print("-" * 40)  # Separator for readability
-                continue
             severity = parts[0].upper()
             if severity not in VALID_SEVERITY_LEVELS:
                 print(f"Invalid severity level: {line_number}: {line}")
