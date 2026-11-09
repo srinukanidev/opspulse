@@ -19,3 +19,13 @@ INVALID_TIMESTAMP ERROR Application failure
 2026-11-06 09:15:00 DEBUG Checking disk utilization
 2026-11-06 09:16:00 UNKNOWN Unexpected severity
 2026-11-06 09:17:00 INFO
+2026-11-06 09:18:00 ERROR Database connection failed
+2026-11-06 09:19:00  WARNING High CPU utilization
+2026-11-06 09:20:00 INFO
+2026-11-06 09:21:00
+2026-11-06 09:22:00A
+2026-11-06 09:23:00X ERROR Invalid separator
+2026-99-99 25:70:00 ERROR Invalid timestamp
+2026-11-06 09:24:00 UNKNOWN Invalid severity
+2026-11-06 09:25:00    ERROR    Database connection failed
+2026-11-06 09:26:00 error Database connection failed
